@@ -8,7 +8,7 @@ COLLABORATOR=champierre
 EXTENSION_DESCRIPTION="Show Geolonia map"
 
 cd node_modules/scratch-vm
-nom install @geolonia/embed
+npm install @geolonia/embed
 cd ../../
 
 mkdir -p node_modules/scratch-vm/src/extensions/scratch3_${EXTENSION_ID}
