@@ -20,6 +20,7 @@ class Scratch3Geolonia2ScratchBlocks {
         div.id = 'map';
         div.className = 'geolonia';
         div.dataset.style = 'geolonia/basic';
+        div.dataset.key = 'YOUR-API-KEY';
 
         div.setAttribute("style", "width:480px;height:360px;opacity:0.5;position:absolute;top:0px;");
         let canvas = document.getElementsByTagName('canvas')[0];
