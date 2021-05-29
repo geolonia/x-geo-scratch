@@ -18,6 +18,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           path: ./geolonia2scratch
+      - run: sed -i s/YOUR\-API\-KEY/${{ secrets.GEOLONIA_API_KEY }}/ ./geolonia2scratch/scratch-vm/src/extensions/scratch3_geolonia2scratch/index.js
       - run: sh ./geolonia2scratch/install.sh
       - run: npm run build
       - uses: peaceiris/actions-gh-pages@v3
