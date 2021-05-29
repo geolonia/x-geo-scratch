@@ -19,6 +19,7 @@ class Scratch3Geolonia2ScratchBlocks {
         div = document.createElement("div");
         div.id = 'map';
         div.className = 'geolonia';
+        div.dataset.style = 'geolonia/basic';
 
         div.setAttribute("style", "width:480px;height:360px;opacity:0.5;position:absolute;top:0px;");
         let canvas = document.getElementsByTagName('canvas')[0];
