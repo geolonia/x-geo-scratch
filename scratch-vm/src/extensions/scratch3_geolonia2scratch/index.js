@@ -46,11 +46,6 @@ class Scratch3Geolonia2ScratchBlocks {
     constructor (runtime) {
         this.runtime = runtime;
 
-        if (runtime.formatMessage) {
-            // Replace 'formatMessage' to a formatter which is used in the runtime.
-            formatMessage = runtime.formatMessage;
-        }
-
         this.addr = {
             code: '',
             prefecture: '',
