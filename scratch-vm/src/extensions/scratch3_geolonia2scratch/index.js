@@ -90,7 +90,7 @@ class Scratch3Geolonia2ScratchBlocks {
                 {
                     opcode: 'flyTo',
                     blockType: BlockType.COMMAND,
-                    text: "経度 [LNG] 緯度 [LAT] ズーム [ZOOM] にジャンプ",
+                    text: '経度 [LNG] 緯度 [LAT] ズーム [ZOOM] にジャンプ',
                     arguments: {
                         LNG: {
                             type: ArgumentType.NUMBER,
@@ -107,9 +107,62 @@ class Scratch3Geolonia2ScratchBlocks {
                     }
                 },
                 {
+                    opcode: 'bearingTo',
+                    blockType: BlockType.COMMAND,
+                    text: '地図を [DEGREE] 度回転する',
+                    arguments: {
+                        DEGREE: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 25
+                        }
+                    }
+                },
+                {
+                    opcode: 'moveVertical',
+                    blockType: BlockType.COMMAND,
+                    text: '地図を縦に [DISTANCE] ピクセル移動する',
+                    arguments: {
+                        DISTANCE: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 100
+                        }
+                    }
+                },
+                {
+                    opcode: 'moveHorizontal',
+                    blockType: BlockType.COMMAND,
+                    text: '地図を横に [DISTANCE] ピクセル移動する',
+                    arguments: {
+                        DISTANCE: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 100
+                        }
+                    }
+                },
+                {
                     opcode: 'getPref',
                     blockType: BlockType.REPORTER,
-                    text: "都道府県名"
+                    text: '都道府県名'
+                },
+                {
+                    opcode: 'getCity',
+                    blockType: BlockType.REPORTER,
+                    text: '市区町村名'
+                },
+                {
+                    opcode: 'getLat',
+                    blockType: BlockType.REPORTER,
+                    text: '緯度'
+                },
+                {
+                    opcode: 'getLng',
+                    blockType: BlockType.REPORTER,
+                    text: '経度'
+                },
+                {
+                    opcode: 'getName',
+                    blockType: BlockType.REPORTER,
+                    text: '場所の名前'
                 }
             ],
             menus: {
@@ -195,8 +248,108 @@ class Scratch3Geolonia2ScratchBlocks {
         return promise;
     }
 
+    zoomTo (args) {
+        if (!this.loaded) {
+            console.error('まず地図を表示してください。');
+            return;
+        }
+
+        return new Promise((resolve) => {
+            this.map.easeTo({
+                zoom: this.map.getZoom() + parseFloat(args.ZOOM),
+                easing: this.easing
+            });
+
+            this.map.once('moveend', () => {
+                resolve();
+            });
+        });
+    }
+
+    bearingTo (args) {
+        if (!this.loaded) {
+            console.error('まず地図を表示してください。');
+            return;
+        }
+
+        return new Promise((resolve) => {
+            this.map.easeTo({
+                bearing: this.map.getBearing() - args.DEGREE,
+                easing: this.easing
+            });
+
+            this.map.once('moveend', () => {
+                resolve();
+            });
+        });
+    }
+
+    moveVertical (args) {
+        if (!this.loaded) {
+            console.error('まず地図を表示してください。');
+            return;
+        }
+
+        const promise = new Promise((resolve) => {
+            this.map.panBy([0, args.DISTANCE], {
+                easing: this.easing
+            });
+
+            this.map.once('moveend', () => {
+                resolve();
+            });
+        });
+
+        return promise;
+    }
+
+    moveHorizontal (args) {
+        if (!this.loaded) {
+            console.error('まず地図を表示してください。');
+            return;
+        }
+
+        const promise = new Promise((resolve) => {
+            this.map.panBy([args.DISTANCE, 0], {
+                easing: this.easing
+            });
+
+            this.map.once('moveend', () => {
+                resolve();
+            });
+        });
+
+        return promise;
+    }
+
+    getLat () {
+        return `${this.center.lat.toFixed(4)}`;
+    }
+
+    getLng () {
+        return `${this.center.lng.toFixed(4)}`;
+    }
+
     getPref () {
         return this.addr.prefecture;
+    }
+
+    getCity () {
+        return this.addr.city;
+    }
+
+    getName () {
+        for (let i = 0; i < this.features.length; i++) {
+            if (this.features[i].layer.type === 'symbol' && this.features[i].properties.name) {
+                return this.features[i].properties.name;
+            }
+        }
+
+        return '';
+    }
+
+    easing (t) {
+        return t * (2 - t);
     }
 
     setLocale () {
