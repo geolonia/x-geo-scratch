@@ -51,7 +51,7 @@ class Scratch3Geolonia2ScratchBlocks {
         script.src = 'https://cdn.geolonia.com/v1/embed?geolonia-api-key=YOUR-API-KEY';
         document.body.appendChild(script);
 
-        div = document.createElement("div");
+        const div = document.createElement("div");
         div.id = 'map';
         div.className = 'geolonia';
         div.dataset.style = 'geolonia/basic';
