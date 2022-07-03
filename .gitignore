@@ -1,2 +1,4 @@
 .DS_Store
 keys
+node_modules
+dist
