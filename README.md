@@ -2,6 +2,8 @@
 
 https://champierre.github.io/geolonia2scratch/
 
+![Geolonia2Scratch x ML2Scratch](images/geolonia-ml.gif)
+
 ## Xcratch からの利用
 
 Geolonia2Scratch は必要な独自拡張機能を読み込むことができる Scratch Mod の「Xcratch」からも利用できます。
