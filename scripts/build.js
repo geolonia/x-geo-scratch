@@ -9,6 +9,7 @@ const nodeBuiltins = require('rollup-plugin-node-builtins');
 const nodeGlobals = require('rollup-plugin-node-globals');
 const importImage = require('@rollup/plugin-image');
 const multi = require('@rollup/plugin-multi-entry');
+const json = require('@rollup/plugin-json');
 
 const optionDefinitions = [
     {
@@ -89,6 +90,7 @@ const rollupOptions = {
             }),
             nodeBuiltins(),
             nodeGlobals(),
+            json(),
             babel({
                 babelrc: false,
                 presets: [
