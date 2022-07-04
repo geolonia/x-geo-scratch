@@ -2,10 +2,10 @@
 
 LF=$(printf '\\\012_')
 LF=${LF%_}
-EXTENSION_NAME=Geolonia2Scratch
-EXTENSION_ID=geolonia2scratch
-COLLABORATOR=champierre
-EXTENSION_DESCRIPTION="Show Geolonia map"
+EXTENSION_NAME="Geo Scratch"
+EXTENSION_ID=geo-scratch
+COLLABORATOR=Geolonia
+EXTENSION_DESCRIPTION="Show a map on Scratch"
 
 cd node_modules/scratch-vm
 npm install @geolonia/open-reverse-geocoder

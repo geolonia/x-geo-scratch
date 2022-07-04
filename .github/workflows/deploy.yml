@@ -17,19 +17,19 @@ jobs:
       - run: npm install
       - uses: actions/checkout@v2
         with:
-          path: ./geolonia2scratch
-      - run: sh ./geolonia2scratch/install.sh
+          path: ./geo-scratch
+      - run: sh ./geo-scratch/install.sh
       - run: npm run build
-      - name: npm install under geolonia2scratch
+      - name: npm install under geo-scratch
         run: npm install
-        working-directory: ./geolonia2scratch
-      - name: Build geolonia2scratch.mjs for xcratch
+        working-directory: ./geo-scratch
+      - name: Build geo-scratch.mjs for xcratch
         run: npm run build
-        working-directory: ./geolonia2scratch
-      - name: Copy geolonia2scratch.mjs to build folder
-        run: cp ./geolonia2scratch/dist/geolonia2scratch.mjs ./build
+        working-directory: ./geo-scratch
+      - name: Copy geo-2scratch.mjs to build folder
+        run: cp ./geo-scratch/dist/geo-scratch.mjs ./build
       - name: Copy sample.sb3 to build folder
-        run: cp ./geolonia2scratch/sample_projects/xcratch/sample.sb3 ./build
+        run: cp ./geo-scratch/sample_projects/xcratch/sample.sb3 ./build
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
