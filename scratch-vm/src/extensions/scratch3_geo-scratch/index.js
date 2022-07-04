@@ -66,9 +66,9 @@ class Scratch3GeoScratchBlocks {
         this._locale = this.setLocale();
 
         return {
-            id: Scratch3Geolonia2ScratchBlocks.EXTENSION_ID,
-            name: Scratch3Geolonia2ScratchBlocks.EXTENSION_NAME,
-            extensionURL: Scratch3Geolonia2ScratchBlocks.extensionURL,
+            id: Scratch3GeoScratchBlocks.EXTENSION_ID,
+            name: Scratch3GeoScratchBlocks.EXTENSION_NAME,
+            extensionURL: Scratch3GeoScratchBlocks.extensionURL,
             blockIconURI: blockIconURI,
             blocks: [
                 {
