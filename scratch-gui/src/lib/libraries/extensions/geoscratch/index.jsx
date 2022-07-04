@@ -1,30 +1,30 @@
 import React from 'react';
 import {FormattedMessage} from 'react-intl';
 
-import geoScratchIconURL from './geo-scratch.png';
-import geoScratchInsetIconURL from './geo-scratch-small.png';
+import geoscratchIconURL from './geoscratch.png';
+import geoscratchInsetIconURL from './geoscratch-small.png';
 
 const translationMap = {
     'ja': {
-        'gui.extension.geo-scratch.description': '地図を操作する。'
+        'gui.extension.geoscratch.description': '地図を操作する。'
     },
     'ja-Hira': {
-        'gui.extension.geo-scratch.description': 'ちずをそうさする'
+        'gui.extension.geoscratch.description': 'ちずをそうさする'
     }
 };
 
 const entry = {
     name: 'Geo Scratch',
-    extensionId: 'geo-scratch',
-    extensionURL: 'https://champierre.github.io/geolonia2scratch/geo-scratch.mjs',
+    extensionId: 'geoscratch',
+    extensionURL: 'https://champierre.github.io/geolonia2scratch/geoscratch.mjs',
     collaborator: 'Geolonia',
-    iconURL: geoScratchIconURL,
-    insetIconURL: geoScratchInsetIconURL,
+    iconURL: geoscratchIconURL,
+    insetIconURL: geoscratchInsetIconURL,
     description: (
         <FormattedMessage
             defaultMessage="Geo Scratch Blocks."
             description="Description for Geo Scratch Blocks."
-            id="gui.extension.geo-scratch.description"
+            id="gui.extension.geoscratch.description"
         />
     ),
     featured: true,
