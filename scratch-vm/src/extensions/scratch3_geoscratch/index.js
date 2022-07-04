@@ -18,7 +18,7 @@ class Scratch3GeoscratchBlocks {
      * @return {string} - the name of this extension.
      */
     static get EXTENSION_NAME () {
-        return 'Geolonia2Scratch';
+        return 'Geo Scratch';
     }
 
     /**
