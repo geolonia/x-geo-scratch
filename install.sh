@@ -4,6 +4,7 @@ LF=$(printf '\\\012_')
 LF=${LF%_}
 EXTENSION_NAME="Geo Scratch"
 EXTENSION_ID=geo-scratch
+EXTENSION_ID_CAMEL_CASE=geoScratch
 COLLABORATOR=Geolonia
 EXTENSION_DESCRIPTION="Show a map on Scratch"
 
@@ -25,8 +26,8 @@ DESCRIPTION="\
         name: '${EXTENSION_NAME}',${LF}\
         extensionId: '${EXTENSION_ID}',${LF}\
         collaborator: '${COLLABORATOR}',${LF}\
-        iconURL: ${EXTENSION_ID}IconURL,${LF}\
-        insetIconURL: ${EXTENSION_ID}InsetIconURL,${LF}\
+        iconURL: ${EXTENSION_ID_CAMEL_CASE}IconURL,${LF}\
+        insetIconURL: ${EXTENSION_ID_CAMEL_CASE}InsetIconURL,${LF}\
         description: (${LF}\
             <FormattedMessage${LF}\
                 defaultMessage='${EXTENSION_DESCRIPTION}'${LF}\
@@ -39,4 +40,4 @@ DESCRIPTION="\
         internetConnectionRequired: true,${LF}\
         bluetoothRequired: false${LF}\
     },"
-sed -e "s|^export default \[$|import ${EXTENSION_ID}IconURL from './${EXTENSION_ID}/${EXTENSION_ID}.png';${LF}import ${EXTENSION_ID}InsetIconURL from './${EXTENSION_ID}/${EXTENSION_ID}-small.png';${LF}${LF}export default [${LF}${DESCRIPTION}|g" src/lib/libraries/extensions/index.jsx_orig > src/lib/libraries/extensions/index.jsx
+sed -e "s|^export default \[$|import ${EXTENSION_ID_CAMEL_CASE}IconURL from './${EXTENSION_ID}/${EXTENSION_ID}.png';${LF}import ${EXTENSION_ID_CAMEL_CASE}InsetIconURL from './${EXTENSION_ID}/${EXTENSION_ID}-small.png';${LF}${LF}export default [${LF}${DESCRIPTION}|g" src/lib/libraries/extensions/index.jsx_orig > src/lib/libraries/extensions/index.jsx
