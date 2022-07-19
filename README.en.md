@@ -1,3 +1,3 @@
-# Geolonia2Scratch
+# Geo Scratch
 
-https://champierre.github.io/geolonia2scratch/
+https://geolonia.github.io/x-geo-scratch/

@@ -16,7 +16,7 @@ const translationMap = {
 const entry = {
     name: 'Geo Scratch',
     extensionId: 'geoscratch',
-    extensionURL: 'https://champierre.github.io/geolonia2scratch/geoscratch.mjs',
+    extensionURL: 'https://geolonia.github.io/x-geo-scratch/geoscratch.mjs',
     collaborator: 'Geolonia',
     iconURL: geoscratchIconURL,
     insetIconURL: geoscratchInsetIconURL,
@@ -31,7 +31,7 @@ const entry = {
     disabled: false,
     bluetoothRequired: false,
     internetConnectionRequired: true,
-    helpLink: 'https://github.com/champierre/geolonia2scratch/',
+    helpLink: 'https://github.com/geolonia/x-geo-scratch/',
     translationMap: translationMap
 };
 
