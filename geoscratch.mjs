@@ -29604,11 +29604,11 @@ var Scratch3GeoscratchBlocks = /*#__PURE__*/function () {
           arguments: {
             LNG: {
               type: argumentType.NUMBER,
-              defaultValue: 0
+              defaultValue: 139.74
             },
             LAT: {
               type: argumentType.NUMBER,
-              defaultValue: 0
+              defaultValue: 35.65
             },
             ZOOM: {
               type: argumentType.NUMBER,
