@@ -2,7 +2,7 @@ name: Deploy
 on:
   push:
     branches:
-      - master
+      - main
     tags:
       - "!*"
 
@@ -26,7 +26,7 @@ jobs:
       - name: Build geoscratch.mjs for xcratch
         run: npm run build
         working-directory: ./geoscratch
-      - name: Copy geo-2scratch.mjs to build folder
+      - name: Copy geoscratch.mjs to build folder
         run: cp ./geoscratch/dist/geoscratch.mjs ./build
       - name: Copy sample.sb3 to build folder
         run: cp ./geoscratch/sample_projects/xcratch/sample.sb3 ./build
