@@ -2,6 +2,8 @@
 
 https://geolonia.github.io/x-geo-scratch/
 
+![nekozilla](images/nekozilla.gif)
+
 ## Xcratch からの利用
 
 Geo-Scratch は必要な独自拡張機能を読み込むことができる Scratch Mod の「Xcratch」からも利用できます。
