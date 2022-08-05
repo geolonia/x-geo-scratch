@@ -56,6 +56,7 @@ class Scratch3GeoscratchBlocks {
         this.center = {lng: 0, lat: 0};
         this.features = [];
         this.loaded = false;
+        this.canvas = null;
 
         let script = document.createElement('script');
         script.src = 'https://cdn.geolonia.com/v1/embed?geolonia-api-key=YOUR-API-KEY';
@@ -143,6 +144,17 @@ class Scratch3GeoscratchBlocks {
                     }
                 },
                 {
+                    opcode: 'setStageTransparency',
+                    blockType: BlockType.COMMAND,
+                    text: 'ステージの透明度を [TRANSPARENCY] にする',
+                    arguments: {
+                        TRANSPARENCY: {
+                            type: ArgumentType.NUMBER,
+                            defaultValue: 50
+                        }
+                    }
+                },
+                {
                     opcode: 'getPref',
                     blockType: BlockType.REPORTER,
                     text: '都道府県名'
@@ -184,12 +196,12 @@ class Scratch3GeoscratchBlocks {
                 mapContainer.setAttribute("style", "width: 100%; height: 100%; position: absolute; top: 0px; background-color: rgb(255, 255, 255);");
             }
 
-            let canvas = document.getElementsByTagName('canvas')[0];
-            canvas.setAttribute("style", "opacity: 0.5; height: 360px; width: 480px; position: absolute; top: 0px; left: 0px;");
-            canvas.parentNode.parentNode.prepend(mapContainer);
+            this.canvas = document.querySelector('body canvas');
+            this.canvas.setAttribute("style", "opacity: 0.5; height: 360px; width: 480px; position: absolute; top: 0px; left: 0px;");
+            this.canvas.parentNode.parentNode.prepend(mapContainer);
 
             if (document.getElementById('geolonia-map')) {
-                mapContainer.removeChild(document.getElementById('geolonia-map'))
+                mapContainer.removeChild(document.getElementById('geolonia-map'));
             }
 
             const div = document.createElement("div");
@@ -320,6 +332,26 @@ class Scratch3GeoscratchBlocks {
             this.map.once('moveend', () => {
                 resolve();
             });
+        });
+
+        return promise;
+    }
+
+    setStageTransparency (args) {
+        if (!this.loaded) {
+            console.error('まず地図を表示してください。');
+            return;
+        }
+
+        const promise = new Promise((resolve) => {
+            let transparency = args.TRANSPARENCY;
+            if (transparency < 0) {
+                transparency = 0;
+            } else if (transparency > 100) {
+                transparency = 100;
+            }
+            this.canvas.setAttribute("style", `opacity: ${1 - transparency / 100.0}; height: 360px; width: 480px; position: absolute; top: 0px; left: 0px;`);
+            resolve();
         });
 
         return promise;
