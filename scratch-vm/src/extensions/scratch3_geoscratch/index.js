@@ -188,21 +188,23 @@ class Scratch3GeoscratchBlocks {
     displayMap(args) {
         return new Promise((resolve) => {
             let mapContainer = document.getElementById('geolonia');
-            if (mapContainer) {
-                mapContainer.parentNode.removeChild(mapContainer);
-            } else {
-                mapContainer = document.createElement("div");
-                mapContainer.id = 'geolonia';
-                mapContainer.setAttribute("style", "width: 100%; height: 100%; position: absolute; top: 0px; background-color: rgb(255, 255, 255);");
-            }
+            if (mapContainer) return resolve();
+
+            mapContainer = document.createElement("div");
+            mapContainer.id = 'geolonia';
+            mapContainer.setAttribute("style", "width: 100%; height: 100%; position: absolute; top: 0px; background-color: rgb(255, 255, 255);");
 
             this.canvas = document.querySelector('body canvas');
-            this.canvas.setAttribute("style", "opacity: 0.5; height: 360px; width: 480px; position: absolute; top: 0px; left: 0px;");
+            this.canvas.setAttribute("style", "opacity: 0.5; height: 100%; width: 100%; position: absolute; top: 0px; left: 0px;");
             this.canvas.parentNode.parentNode.prepend(mapContainer);
 
-            if (document.getElementById('geolonia-map')) {
-                mapContainer.removeChild(document.getElementById('geolonia-map'));
-            }
+            const observer = new MutationObserver(() => {
+                this.canvas.setAttribute("style", "opacity: 0.5; height: 100%; width: 100%; position: absolute; top: 0px; left: 0px;");
+            });
+            observer.observe(this.canvas.parentNode.parentNode, {
+                attriblutes: true,
+                attributeFilter: ["style"]
+            });
 
             const div = document.createElement("div");
             div.id = 'geolonia-map';
