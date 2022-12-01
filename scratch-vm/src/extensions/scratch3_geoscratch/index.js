@@ -188,7 +188,9 @@ class Scratch3GeoscratchBlocks {
     displayMap(args) {
         return new Promise((resolve) => {
             let mapContainer = document.getElementById('geolonia');
-            if (mapContainer) return resolve();
+            if (mapContainer) {
+                mapContainer.parentNode.removeChild(mapContainer);
+            }
 
             mapContainer = document.createElement("div");
             mapContainer.id = 'geolonia';
@@ -198,13 +200,15 @@ class Scratch3GeoscratchBlocks {
             this.canvas.setAttribute("style", "opacity: 0.5; height: 100%; width: 100%; position: absolute; top: 0px; left: 0px;");
             this.canvas.parentNode.parentNode.prepend(mapContainer);
 
-            const observer = new MutationObserver(() => {
-                this.canvas.setAttribute("style", "opacity: 0.5; height: 100%; width: 100%; position: absolute; top: 0px; left: 0px;");
-            });
-            observer.observe(this.canvas.parentNode.parentNode, {
-                attriblutes: true,
-                attributeFilter: ["style"]
-            });
+            if (!this.canvasObserver) {
+                this.canvasObserver = new MutationObserver(() => {
+                    this.canvas.setAttribute("style", "opacity: 0.5; height: 100%; width: 100%; position: absolute; top: 0px; left: 0px;");
+                });
+                this.canvasObserver.observe(this.canvas.parentNode.parentNode, {
+                    attriblutes: true,
+                    attributeFilter: ["style"]
+                });
+            }
 
             const div = document.createElement("div");
             div.id = 'geolonia-map';
