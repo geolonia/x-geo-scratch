@@ -356,7 +356,8 @@ class Scratch3GeoscratchBlocks {
             } else if (transparency > 100) {
                 transparency = 100;
             }
-            this.canvas.setAttribute("style", `opacity: ${1 - transparency / 100.0}; height: 360px; width: 480px; position: absolute; top: 0px; left: 0px;`);
+
+            this.canvas.setAttribute("style", `opacity: ${1 - transparency / 100.0}; height: 100%; width: 100%; position: absolute; top: 0px; left: 0px;`);
             resolve();
         });
 
